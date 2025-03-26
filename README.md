@@ -9,7 +9,9 @@
 - 목표: **지자체 차원에서의 겨울철 보행 취약 계층 및 안전한 주행 환경 조성에 관한 서비스 개발**
   
 ### 시각적 자료
-![프로젝트 기획서 다이어그램] ![Uploading image.png…](https://github.com/user-attachments/assets/daf565e0-9eb9-4927-a2f2-66ef6e89f7d3)
+![프로젝트 기획서 다이어그램] 
+![Uploading image.png…] <img src="https://github.com/user-attachments/assets/daf565e0-9eb9-4927-a2f2-66ef6e89f7d3" alt="Flow Chart" width="500"/>
+
 
 
 
