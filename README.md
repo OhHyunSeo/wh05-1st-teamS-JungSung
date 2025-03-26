@@ -10,7 +10,7 @@
   
 ### 시각적 자료
 ![프로젝트 기획서 다이어그램] 
-<img src="https://github.com/user-attachments/assets/daf565e0-9eb9-4927-a2f2-66ef6e89f7d3" alt="Flow Chart" width="100"/>
+<img src="https://github.com/user-attachments/assets/daf565e0-9eb9-4927-a2f2-66ef6e89f7d3" alt="Flow Chart" width="200"/>
 
 
 
