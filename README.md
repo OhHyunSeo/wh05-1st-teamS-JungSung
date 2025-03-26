@@ -10,7 +10,7 @@
 
 ### 🔁 프로젝트 흐름도  
 <p align='center'>
-  <img src="https://github.com/user-attachments/assets/daf565e0-9eb9-4927-a2f2-66ef6e89f7d3" alt="Flow Chart" width="200"/>
+  <img src="https://github.com/user-attachments/assets/cada2586-1282-40ed-999a-521b971827db" alt="Flow Chart" width="300"/>
 </p>
 
 ---
