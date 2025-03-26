@@ -9,10 +9,9 @@
 - 목표: **지자체 차원에서의 겨울철 보행 취약 계층 및 안전한 주행 환경 조성에 관한 서비스 개발**
   
 ### 시각적 자료
-<img src="https://github.com/user-attachments/assets/daf565e0-9eb9-4927-a2f2-66ef6e89f7d3" alt="Flow Chart" width="200"/>
-
-
-
+<p align='center'>
+  <img src="https://github.com/user-attachments/assets/daf565e0-9eb9-4927-a2f2-66ef6e89f7d3" alt="Flow Chart" width="200"/>
+</p>
 
 ## 2. 프로젝트 일정
 ### [프로젝트 일정]
@@ -53,8 +52,10 @@
 ### 3. 데이터 분석 및 모델링
 3.1. 데이터 시각화
 - matplotlib, Geopython, seaborn 등의 모듈을 이용한 시각화
+
 3.2. 모델 선택 및 학습
 - 관련 논문에서 결빙 판단 알고리즘 발췌
+  
 3.3. 성능 평가
 -  1, 2, 3, 4차 알고리즘을 각각 분석 후 결빙 판단
 
@@ -62,15 +63,29 @@
 
 # 결빙 판단 알고리즘
 ## 1. 응결에 의한 결빙
-![결빙알고리즘1](https://github.com/user-attachments/assets/2eca4fe4-d522-4b1d-9932-8a3426490562)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2eca4fe4-d522-4b1d-9932-8a3426490562">
+</p>
+
 ## 2. 강수에 의한 결빙
-![결알2](https://github.com/user-attachments/assets/e00d165b-7003-4e41-a255-e9227bb086cd)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e00d165b-7003-4e41-a255-e9227bb086cd">
+</p>
+
 ## 3. 적설에 의한 결빙
-![결알3](https://github.com/user-attachments/assets/6e57c381-0874-4408-8e69-267c239a81b6)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6e57c381-0874-4408-8e69-267c239a81b6">
+</p>
+
 ## 4. 결빙 상태 지속
-![결알4](https://github.com/user-attachments/assets/76bac1a1-540a-4399-b6f0-0abb7ea60a7f)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/76bac1a1-540a-4399-b6f0-0abb7ea60a7f">
+</p>
+
 ## 5. 풍속에 의한 결빙
-![결알5](https://github.com/user-attachments/assets/09d09f0e-07fa-48f5-bb30-63513002e1c5)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/09d09f0e-07fa-48f5-bb30-63513002e1c5">
+</p>
 
   ------------------------------
 
