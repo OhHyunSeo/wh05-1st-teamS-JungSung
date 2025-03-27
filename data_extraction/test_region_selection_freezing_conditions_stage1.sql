@@ -19,10 +19,8 @@ CREATE TABLE weather_230101 (
     sd_3hr DOUBLE
 );
 
-
-
 -- CSV 파일1 import
-LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 9.2\\Uploads\\230101_weather.csv'
+LOAD DATA INFILE '230101_weather.csv'
 INTO TABLE weather_230101
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
@@ -30,13 +28,12 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
 -- CSV 파일2 import
-LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 9.2\\Uploads\\surface_temperature.csv'
+LOAD DATA INFILE 'surface_temperature.csv'
 INTO TABLE surface_temperature
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
-
 
 WITH base AS (
   SELECT
@@ -115,4 +112,3 @@ WHERE
        )
   )
 GROUP BY gid;
-
