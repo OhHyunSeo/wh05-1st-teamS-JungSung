@@ -18,10 +18,8 @@ CREATE TABLE weather_230101 (
     sd_3hr DOUBLE
 );
 
-
-
 -- CSV 파일1 import
-LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 9.2\\Uploads\\230101_weather.csv'
+LOAD DATA INFILE '230101_weather.csv'
 INTO TABLE weather_230101
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
@@ -29,7 +27,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
 -- CSV 파일2 import
-LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 9.2\\Uploads\\surface_temperature.csv'
+LOAD DATA INFILE 'surface_temperature.csv'
 INTO TABLE surface_temperature
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
@@ -63,7 +61,7 @@ WITH base AS (
 conds AS (
   SELECT
     *,
-    -- 조건 1: hm >= 65, ts_avg <= td+5, ta <= 5, ts_avg <= 0
+    -- 알고리즘 조건 1: hm >= 65, ts_avg <= td+5, ta <= 5, ts_avg <= 0
     (
       (hm >= 65)
       AND (ts_avg <= td + 5)
@@ -71,7 +69,7 @@ conds AS (
       AND (ts_avg <= 0)
     ) AS cond1,
     
-    -- 조건 2: hm >= 65, ts_avg <= td+5, ta <= 5, 0 < ts_avg <= 1, 그리고 이전 ts_avg와 비교 시 차이가 >= 1
+    -- 알고리즘 조건 2: hm >= 65, ts_avg <= td+5, ta <= 5, 0 < ts_avg <= 1, 그리고 이전 ts_avg와 비교 시 차이가 >= 1
     (
       (hm >= 65)
       AND (ts_avg <= td + 5)
@@ -80,17 +78,17 @@ conds AS (
       AND (prev_ts_avg IS NOT NULL AND (prev_ts_avg - ts_avg) <= -1)
     ) AS cond2,
     
-    -- 조건 3: 3번째 전 rn_60m > 1, ts_avg <= 0, 그리고 (3번째 전, 2번째 전, 1번째 전, 본 데이터 중) 하나라도 ta <= 0
+    -- 알고리즘 조건 3: 3번째 전 rn_60m > 1, ts_avg <= 0, 그리고 (3번째 전, 2번째 전, 1번째 전, 본 데이터 중) 하나라도 ta <= 0
     (
       (rn_60m_3 > 1)
       AND (ts_avg <= 0)
       AND ((ta_prev3 <= 0) OR (ta_prev2 <= 0) OR (ta_prev1 <= 0) OR (ta <= 0))
     ) AS cond3,
     
-    -- 조건 4: sd_3hr가 0이 아님
+    -- 알고리즘 조건 4: sd_3hr가 0이 아님
     (sd_3hr <> 0) AS cond4,
     
-    -- 조건 5: ts_avg <= 0, ABS(ts_avg - (td+5)) < 0.5, ws_10m > 2
+    -- 알고리즘 조건 5: ts_avg <= 0, ABS(ts_avg - (td+5)) < 0.5, ws_10m > 2
     (
       (ts_avg <= 0)
       AND (ABS(ts_avg - (td + 5)) < 0.5)
@@ -116,19 +114,14 @@ WHERE
   (
     cond1 OR cond2 OR cond3 OR cond4 OR cond5
     OR (
-         -- 조건 6: ta <= 0, ts_avg <= 0, 그리고 이전 4행 중 조건1~5를 만족하는 행이 하나 이상 존재
+         -- 알고리즘 조건 6: ta <= 0, ts_avg <= 0, 그리고 이전 4행 중 조건1~5를 만족하는 행이 하나 이상 존재
          (ta <= 0)
          AND (ts_avg <= 0)
          AND (prev_cond_count > 0)
        )
   );
   
-  
-  
-  
-  -- Count 구문 사용 안하고 어떤 게 선택되었는지 확인 하는 구문
-  
-  
+  -- Count 구문 사용 안 하고 어떤 게 선택되었는지 확인 하는 구문
   WITH base AS (
   SELECT
     weather_230101.lon,
@@ -156,7 +149,7 @@ WHERE
 conds AS (
   SELECT
     *,
-    -- 조건 1: hm >= 65, ts_avg <= td+5, ta <= 5, ts_avg <= 0
+    -- 알고리즘 조건 1: hm >= 65, ts_avg <= td+5, ta <= 5, ts_avg <= 0
     (
       (hm >= 65)
       AND (ts_avg <= td + 5)
@@ -164,7 +157,7 @@ conds AS (
       AND (ts_avg <= 0)
     ) AS cond1,
     
-    -- 조건 2: hm >= 65, ts_avg <= td+5, ta <= 5, 0 < ts_avg <= 1, 그리고 이전 ts_avg와 비교 시 차이가 >= 1
+    -- 알고리즘 조건 2: hm >= 65, ts_avg <= td+5, ta <= 5, 0 < ts_avg <= 1, 그리고 이전 ts_avg와 비교 시 차이가 >= 1
     (
       (hm >= 65)
       AND (ts_avg <= td + 5)
@@ -173,17 +166,17 @@ conds AS (
       AND (prev_ts_avg IS NOT NULL AND (prev_ts_avg - ts_avg) <= -1)
     ) AS cond2,
     
-    -- 조건 3: 3번째 전 rn_60m > 1, ts_avg <= 0, 그리고 (3번째 전, 2번째 전, 1번째 전, 본 데이터 중) 하나라도 ta <= 0
+    -- 알고리즘 조건 3: 3번째 전 rn_60m > 1, ts_avg <= 0, 그리고 (3번째 전, 2번째 전, 1번째 전, 본 데이터 중) 하나라도 ta <= 0
     (
       (rn_60m_3 > 1)
       AND (ts_avg <= 0)
       AND ((ta_prev3 <= 0) OR (ta_prev2 <= 0) OR (ta_prev1 <= 0) OR (ta <= 0))
     ) AS cond3,
     
-    -- 조건 4: sd_3hr가 0이 아님
+    -- 알고리즘 조건 4: sd_3hr가 0이 아님
     (sd_3hr <> 0) AS cond4,
     
-    -- 조건 5: ts_avg <= 0, ABS(ts_avg - (td+5)) < 0.5, ws_10m > 2
+    -- 알고리즘 조건 5: ts_avg <= 0, ABS(ts_avg - (td+5)) < 0.5, ws_10m > 2
     (
       (ts_avg <= 0)
       AND (ABS(ts_avg - (td + 5)) < 0.5)
@@ -208,7 +201,7 @@ FROM with_prev
 WHERE 
   ( cond1 OR cond2 OR cond3 OR cond4 OR cond5
     OR (
-         -- 조건 6: ta <= 0, ts_avg <= 0, 그리고 이전 4행 중 조건 1~5 중 하나라도 만족하는 경우
+         -- 알고리즘 조건 6: ta <= 0, ts_avg <= 0, 그리고 이전 4행 중 조건 1~5 중 하나라도 만족하는 경우
          (ta <= 0)
          AND (ts_avg <= 0)
          AND (prev_cond_count > 0)
