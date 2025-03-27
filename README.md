@@ -58,7 +58,7 @@
 ---
 
 ## 🧊 결빙 판단 알고리즘
-| 알고리즘 유형 | 설명 | 시각자료 |
+| 알고리즘 유형 | 설명 | Flow Chart |
 |---------------|------|---------|
 | 1. 응결 결빙 | 대기 중 수증기 → 지면에서 응결 | <p align='center'><img src="https://github.com/user-attachments/assets/2eca4fe4-d522-4b1d-9932-8a3426490562"/></p> |
 | 2. 강수 결빙 | 비나 진눈깨비가 내려 얼어붙는 상황 | <p align='center'><img src="https://github.com/user-attachments/assets/e00d165b-7003-4e41-a255-e9227bb086cd"/></p> |
