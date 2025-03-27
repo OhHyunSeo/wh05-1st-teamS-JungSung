@@ -5,7 +5,7 @@ import fiona
 import matplotlib.pyplot as plt
 
 # --- 1. 유동인구 데이터 (A60 기준 상위 50개) ---
-df_pop = pd.read_csv("./2023연령별_유동인구_순위_2023_02.csv", encoding='cp949')
+df_pop = pd.read_csv("2023연령별_유동인구_순위_2023_02.csv", encoding='cp949')
 df_top50 = df_pop.sort_values("A60", ascending=False).head(795)
 df_top50.rename(columns={"GID": "gid"}, inplace=True)
 
@@ -13,7 +13,7 @@ df_top50.rename(columns={"GID": "gid"}, inplace=True)
 geoms = []
 props_list = []
 
-with fiona.open("./100m격자.shp", "r") as src:
+with fiona.open("100m격자.shp", "r") as src:
     for feat in src:
         geom = shape(feat["geometry"])
         props = feat["properties"]
@@ -54,18 +54,8 @@ plt.axis("off")
 plt.tight_layout()
 plt.show()
 
-
-
-
-
-import geopandas as gpd
-import pandas as pd
-from shapely.geometry import shape
-import fiona
-import matplotlib.pyplot as plt
-
 # --- 1. GID별 A60 총합 데이터 불러오기 ---
-df_total = pd.read_csv("./GID별_A60_총합_병합결과.csv")
+df_total = pd.read_csv("GID별_A60_총합_병합결과.csv")
 df_total.rename(columns={"GID": "gid"}, inplace=True)
 
 # A60 값이 적은 순서로 정렬 후 하위 795개 추출
@@ -75,7 +65,7 @@ df_bottom_795 = df_total.sort_values("A60").tail(795)
 geoms = []
 props_list = []
 
-with fiona.open("./100m격자.shp", "r") as src:
+with fiona.open("100m격자.shp", "r") as src:
     for feat in src:
         geom = shape(feat["geometry"])
         props = feat["properties"]
@@ -117,49 +107,3 @@ plt.title("GID별 A60 총합 하위 795개 히트맵", fontsize=15)
 plt.axis("off")
 plt.tight_layout()
 plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
