@@ -1,0 +1,15 @@
+pandas
+numpy
+matplotlib
+seaborn
+geopandas
+contextily
+folium
+rasterio
+rasterstats
+shapely
+fiona
+requests
+tqdm
+netCDF4
+koreanize_matplotlib
