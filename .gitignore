@@ -22,7 +22,6 @@ ENV/
 *.hdf5
 *.h5
 *.log
-*.csv
 *.tsv
 *.zip
 *.gz
