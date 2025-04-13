@@ -1,5 +1,3 @@
-...DSM 만드는 코드...
-
 import geopandas as gpd
 import rasterio
 from rasterio.features import rasterize

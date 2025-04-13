@@ -1,5 +1,3 @@
-...DSM을 이용한 음영지역 시각화 시물레이션 코드...
-
 import rasterio
 import numpy as np
 import matplotlib.pyplot as plt
